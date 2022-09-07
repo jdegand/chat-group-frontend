@@ -57,9 +57,9 @@
 
 ![](chat-group-mobile-modal.png)
 
-![](chat-group-mobile-change-profile-pic.png "margin styling issue on mobile")
+![](chat-group-mobile-change-profile-pic.png "margin styling issue on mobile - not centered")
 
-![](chat-group-panel-open-change-viewport-size.png "if menu open and change viewport - menu stretches")
+![](chat-group-panel-open-change-viewport-size.png "if menu open and you change viewport - menu stretches")
 
 ### Built With
 
@@ -140,19 +140,19 @@ $ npm start
 - [Stack Overflow](https://stackoverflow.com/questions/40062477/formdata-append-not-working) - console logging formdata
 - [Stack Overflow](https://stackoverflow.com/questions/20549241/how-to-reset-input-type-file) - reset input type file
 - [Stack Overflow](https://stackoverflow.com/questions/43922508/clear-and-reset-form-input-fields) - reset input field on submit in react
-- [Mastering JS](https://masteringjs.io/tutorials/mongoose/timestamps)
+- [Mastering JS](https://masteringjs.io/tutorials/mongoose/timestamps) - mongoose timestamps
 - [Stack Overflow](https://stackoverflow.com/questions/59198952/using-document-queryselector-in-react-should-i-use-refs-instead-how) - querySelector usage in react
 - [Stack Overflow](https://stackoverflow.com/questions/39597804/how-i-can-use-refs-to-change-styling-class-in-reactjs) - refs to change styling
 - [Blog](https://bobbyhadz.com/blog/javascript-convert-iso-string-to-date-object#:~:text=Use%20the%20Date()%20constructor,will%20return%20a%20Date%20object.) - convert iso string to date object
 - [Stack Overflow](https://stackoverflow.com/questions/45016033/how-do-i-test-axios-in-jest) - test axios in jest
-- [Blog](https://vhudyma-blog.eu/3-ways-to-mock-axios-in-jest/)
+- [Blog](https://vhudyma-blog.eu/3-ways-to-mock-axios-in-jest/) - 3 ways to mock axios in jest
 - [Blog](https://timdeschryver.dev/blog/making-sure-youre-using-the-correct-query#byrole-provides-a-solution-to) - queries in testing
 - [Blog](https://javascript.plainenglish.io/testing-local-storage-with-testing-library-580f74e8805b) - testing local storage with testing library
 - [Stack Overflow](https://stackoverflow.com/questions/57034062/why-code-coverage-in-react-app-is-empty-tried-using-npm-run-test-coverage) - test coverage
 - [Stack Overflow](https://stackoverflow.com/questions/32911630/how-do-i-deal-with-localstorage-in-jest-tests) - localstorage in jest tests
 - [Blog](https://robertmarshall.dev/blog/how-to-mock-local-storage-in-jest-tests/) - mock local storage in jest
 - [Blog](https://bholmes.dev/blog/mocking-browser-apis-fetch-localstorage-dates-the-easy-way-with-jest/) - mock localstorage
-- [Stack Overflow](https://stackoverflow.com/questions/65728677/test-component-with-context-and-react-hook)
+- [Stack Overflow](https://stackoverflow.com/questions/65728677/test-component-with-context-and-react-hook) - test component with context and react hook
 - [Blog](https://www.leighhalliday.com/async-axios-react-testing-library) - async axios react testing library
 - [World Wide Technology](https://www.wwt.com/article/using-mock-service-worker-to-improve-jest-unit-tests) - msw to improve jest unit tests
 - [Blog](https://javascript.plainenglish.io/full-jwt-based-auth-implementation-for-your-react-apps-using-a-graphql-api-a8b83ad285f5) - full jwt auth with graphql
@@ -160,4 +160,4 @@ $ npm start
 - [YouTube](https://www.youtube.com/playlist?list=PLIGDNOJWiL182w2gKS5TsDuO6PZkJa0tK) - react testing library playlist
 - [Github](https://github.com/testing-library/user-event/issues/533) - user event whole value is not typed
 - [YouTube](https://www.youtube.com/watch?v=6jKBLaMUD0Q) - MSW Tutorial
-- [MSW Docs](https://mswjs.io/docs/getting-started/integrate/node)
+- [MSW Docs](https://mswjs.io/docs/getting-started/integrate/node) - MSW integrate node
