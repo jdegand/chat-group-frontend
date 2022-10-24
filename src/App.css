@@ -575,9 +575,14 @@ padding: 1rem 0.5rem;
 
   .login-section {
     width: 95vw;
-    transform: translate(-50%,-75%);
+    /*transform: translate(-50%,-50%);*/
     padding: 40px 20px;
     font-size: 20px;
+  }
+
+  /* could make separate query for less than 375px just for this */
+  .nav-btn {
+    font-size: 14px;
   }
   
   .mobile-only {
