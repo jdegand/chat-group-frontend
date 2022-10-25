@@ -1,39 +1,42 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import userEvent from '@testing-library/user-event'
+import { fireEvent, render, screen } from "@testing-library/react";
 import {BrowserRouter as Router} from 'react-router-dom';
 import Login from './Login';
 
 describe("Login Functionality", () =>  {
 
-    beforeEach(() => render(<Router><Login /></Router>)) // need to add auth context
-
     test("label should be rendered", () => {
+        render(<Router><Login /></Router>)
         const usernameLabel = screen.getByLabelText(/username/i);
         expect(usernameLabel).toBeInTheDocument();
     });
   
     test("password input should be rendered", () => {
+        render(<Router><Login /></Router>)
         const passwordLabel = screen.getByLabelText(/password/i);
         expect(passwordLabel).toBeInTheDocument();
     });
   
     test("button should be rendered", () => {
-        const buttonEl = screen.getByText(/sign in/i, { selector: 'button' });//screen.getByRole('button', {name: /sign in/i});
+        render(<Router><Login /></Router>)
+        const buttonEl = screen.getByText(/sign in/i, { selector: 'button' }); // screen.getByRole('button', {name: /sign in/i});
         expect(buttonEl).toBeInTheDocument();
     });
 
     test("username input should be empty", () => {
+        render(<Router><Login /></Router>)
         const usernameLabel = screen.getByLabelText(/username/i);
         expect(usernameLabel.value).toBe("");
     });
 
     test("password input should be empty", () => {
+        render(<Router><Login /></Router>)
         const passwordLabel = screen.getByLabelText(/password/i);
         expect(passwordLabel.value).toBe("");
     });
 
     test("username input should change", () => {
-        const usernameInputEl = document.querySelector('#username')
+        render(<Router><Login /></Router>)
+        const usernameInputEl = screen.getByLabelText(/username/i)
         const testValue = "test";
       
         fireEvent.change(usernameInputEl, { target: { value: testValue } });
@@ -41,7 +44,8 @@ describe("Login Functionality", () =>  {
     });
 
     test("password input should change", () => {
-        const passwordInputEl = document.querySelector('#password')
+        render(<Router><Login /></Router>)
+        const passwordInputEl = screen.getByLabelText(/username/i)
         const testValue = "test";
       
         fireEvent.change(passwordInputEl, { target: { value: testValue } });
