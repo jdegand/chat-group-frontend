@@ -15,52 +15,43 @@ const Profile = () => {
     // useEffect to get user info - backend protected with jwt
     // the backend user doesn't have much information 
     // this could be used for updating user picture 
-    
-    useEffect(()=> {
 
-        const getUserInfo = async() => {
+    useEffect(() => {
+
+        const getUserInfo = async () => {
             try {
                 const response = await axios.get(`/users/${auth.id}`, {
                     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
                     withCredentials: true
-                    }
+                }
                 );
 
                 setUser(response.data);
-            } catch(err) {
+            } catch (err) {
                 console.log(err);
             }
- 
+
         }
 
         getUserInfo();
 
     }, [])
 
-    const handleSubmit = async (e) => {  
-        e.preventDefault(); 
-        
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const formData = new FormData();
         formData.append('file', file);
         formData.append('fileName', file.name);
-        
-        /* console.log(formData) // {} - have to loop
 
-        for (var key of formData.entries()) {
-            console.log(key[0] + ', ' + key[1]);
-        }
-        */
-        
         try {
-            const response = await axios.post(`/users/${auth.id}`, formData, {
+            await axios.post(`/users/${auth.id}`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data', 'Authorization': `Bearer ${auth.accessToken}` },
                 withCredentials: true
             });
 
-            console.log(response);
             e.target.reset();
-            setFile('')
-            console.log(file)
+            setFile('');
         } catch (err) {
             // Handle Error Here
             console.error(err);
@@ -71,18 +62,18 @@ const Profile = () => {
         <>
             {!user && <p>Loading...</p>}
             {user &&
-            <div className="profile-container">
-                <h1>{user.username}, update your profile picture below</h1>
-                <form className="mb-50" onSubmit={handleSubmit}>
-                    <input id="fileInput" type="file" onChange={(e)=> setFile(e.target.files[0])} />
-                    <label htmlFor="fileInput">Add your picture</label>
-                    <br/>
-                    <div className="flex align-baseline mb-50">
-                    <Link className="mr-20" to="/">Go Back</Link>
-                    <button type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
+                <div className="profile-container">
+                    <h1>{user.username}, update your profile picture below</h1>
+                    <form className="mb-50" onSubmit={handleSubmit}>
+                        <input id="fileInput" type="file" onChange={(e) => setFile(e.target.files[0])} />
+                        <label htmlFor="fileInput">Add your picture</label>
+                        <br />
+                        <div className="flex align-baseline mb-50">
+                            <Link className="mr-20" to="/">Go Back</Link>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
             }
         </>
     )
