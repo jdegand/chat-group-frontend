@@ -35,7 +35,7 @@ const Profile = () => {
 
         getUserInfo();
 
-    }, [])
+    }, [auth.accessToken, auth.id])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
