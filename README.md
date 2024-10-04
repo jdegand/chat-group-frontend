@@ -15,51 +15,97 @@
 
 ## Overview
 
-![](chat-group-sign-in.png "shows login on first load")
+![Login on first load](screenshots/chat-group-sign-in.png "shows login on first load")
 
-![](chat-group-register.png)
+***
 
-![](chat-group-channels-view.png)
+![Register](screenshots/chat-group-register.png)
 
-![](chat-group-channel-view.png)
+***
 
-![](chat-group-channels-search.png)
+![Group Channels](screenshots/chat-group-channels-view.png)
 
-![](chat-group-channels-modal.png)
+***
 
-![](chat-group-new-channel-created.png)
+![Channel View](screenshots/chat-group-channel-view.png)
 
-![](chat-group-new-channel-add-message.png)
+***
 
-![](chat-group-new-channel-message-added.png)
+![Channels Search](screenshots/chat-group-channels-search.png)
 
-![](chat-group-channels-user-modal.png)
+***
 
-![](chat-group-change-profile-pic-view.png)
+![Channels Modal](screenshots/chat-group-channels-modal.png)
 
-![](chat-group-profile-pic-change-staged.png)
+***
 
-![](chat-group-profile-pic-changed.png)
+![New Channel Created](screenshots/chat-group-new-channel-created.png)
 
-![](chat-group-scrollbars.png "scrollbars if too many messages or users")
+***
 
-![](chat-group-tablet.png "tablet")
+![New Channel Add Message](screenshots/chat-group-new-channel-add-message.png)
 
-![](chat-group-mobile.png "mobile")
+***
 
-![](chat-group-mobile-channels.png)
+![New Channel Message](screenshots/chat-group-new-channel-message-added.png)
 
-![](chat-group-mobile-add-new-channel.png)
+***
 
-![](chat-group-mobile-search.png)
+![User Modal](screenshots/chat-group-channels-user-modal.png)
 
-![](chat-group-mobile-sidepanel-open.png)
+***
 
-![](chat-group-mobile-modal.png)
+![Profile Pic View](screenshots/chat-group-change-profile-pic-view.png)
 
-![](chat-group-mobile-change-profile-pic.png "margin styling issue on mobile - not centered")
+***
 
-![](chat-group-panel-open-change-viewport-size.png "if menu open and you change viewport - menu stretches")
+![Profile picture change staged](screenshots/chat-group-profile-pic-change-staged.png)
+
+***
+
+![Profile picture changed](screenshots/chat-group-profile-pic-changed.png)
+
+***
+
+![Scrollbars](screenshots/chat-group-scrollbars.png "scrollbars if too many messages or users")
+
+***
+
+![Tablet View](screenshots/chat-group-tablet.png "tablet")
+
+***
+
+![Mobile](screenshots/chat-group-mobile.png "mobile")
+
+***
+
+![Mobile Channels](screenshots/chat-group-mobile-channels.png)
+
+***
+
+![Mobile Add New Channel](screenshots/chat-group-mobile-add-new-channel.png)
+
+***
+
+![Mobile Search](screenshots/chat-group-mobile-search.png)
+
+***
+
+![Sidepanel Open](screenshots/chat-group-mobile-sidepanel-open.png)
+
+***
+
+![Mobile Modal](screenshots/chat-group-mobile-modal.png)
+
+***
+
+![Mobile Profile Picture change](screenshots/chat-group-mobile-change-profile-pic.png "margin styling issue on mobile - not centered")
+
+***
+
+![Menu open and viewport changes issue](screenshots/chat-group-panel-open-change-viewport-size.png "if menu open and you change viewport - menu stretches")
+
+***
 
 ### Built With
 
@@ -77,8 +123,8 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository & the companion backend repo
-$ git clone https://jdegand.github.io/chat-group-backend
-$ git clone https://jdegand.github.io/chat-group-frontend
+$ git clone https://github.com/jdegand/chat-group-backend.git
+$ git clone https://github.com/jdegand/chat-group-frontend.git
 
 # Install dependencies in both repos
 $ npm install
@@ -94,30 +140,30 @@ $ npm start
 - One of the downsides of reusing code can be bloat ie import styles wholesale but you end up removing markup while refactoring and then unused css is left behind.
 - Thought of using separate messages component - one for first load when messages are displayed for either welcome channel or last updated channel and one for when user clicked on any of the available channels - but I was able to reuse same messages component and pass props to determine either scenario
 - Logging in the first time, you will get sent to the welcome channel and you will be added to members array displayed on the channel sidebar however sometimes the picture will not display correctly in the userinfo div.  
-- Originally, user is assigned a string to a website image for profile picture.  The problem could be network related - ie requests may be rate limited or server may be slow.  Add Lazy loading? 
+- Originally, user is assigned a string to a website image for profile picture.  The problem could be network related - ie requests may be rate limited or server may be slow.  Add Lazy loading?
 - Could change user flow - where user is allowed to add photo when they first register.  Probably requires backend modification in addition to adding file input to register form.  
-- I added the messageId to the channel on the backend versus sending an axios put request.  I originally had the backend send the message Id back to the client which I could use to send a put request to channels/:channelId route.  This could be looked into and refactored if necessary. 
+- I added the messageId to the channel on the backend versus sending an axios put request.  I originally had the backend send the message Id back to the client which I could use to send a put request to channels/:channelId route.  This could be looked into and refactored if necessary.
 - Could use a package to handle the createdAt dates.  TimeAgo might be a good fit.  
-- Even with TimeAgo or time format package - a lot of logic may be necessary to have 'yesterday at 2:00pm' date formatting 
+- Even with TimeAgo or time format package - a lot of logic may be necessary to have 'yesterday at 2:00pm' date formatting
 - The channels on the sidebar should probably be ordered by the date of the last comment.  Or last clicked on channel could become first channel.
 - Not a fan of the color scheme of the design.  The input text and input background is not a great contrast.
 - Added scrollbars to the channels and members lists.  Only looked into changing the look of the default scrollbar in chrome.  Cross-browser support of scrollbar styling is usually problematic.
 - I added most of the svgs directly in the jsx vs importing them and passing them to the jsx.  Performance implications?
-- Check for errors when adding user to members array - might not refresh 
+- Check for errors when adding user to members array - might not refresh
 - Adding cleanup functions to some useEffects broke the app -> need to look more into cleanup best practices etc
-- Axios can now use Abort Controllers directly vs using cancelToken implementation.   
+- Axios can now use Abort Controllers directly vs using cancelToken implementation.
 - emoji picker ? - look for react library
 - improve error handling
-- look into improving original state value defaults.  Left some with nothing ie useState() vs an empty string or an empty array 
+- look into improving original state value defaults.  Left some with nothing ie useState() vs an empty string or an empty array
 - non persist mode - refreshToken expires - you can't perform actions but you arent informed why - useRefreshToken hook not being used?
 - file inputs are uncontrolled components in react
-- testing - a *ton* of things to test -> *more complicated* than the original code. 
+- testing - a *ton* of things to test -> *more complicated* than the original code.
 - a lot of features are combined.  I had trouble testing local storage because I used context as well.   You have to add context wrapper to your render but I used a hook for the context so that makes that harder and on and on.
-- MSW is one recommended way of testing api calls now. However, documentation is scarce.  Even Kent Dodds has no articles on his blog.     
-- Might need to create in memory database of users, channels, and messages 
+- MSW is one recommended way of testing api calls now. However, documentation is scarce.  Even Kent Dodds has no articles on his blog.
+- Might need to create in memory database of users, channels, and messages
 - Problems with userEvent.type -> need a name property on your input ?
 - Removed msw and need look at alteratives or find some good documentation to help.
-- Thought about adding cypress to test.  However, the tests will be brittle.  I am not advanced enough in cypress and I have had a hard time finding good examples to follow for authentication.  I would create a user journey where you login with predefined test user and password and create a channel, add messages and change profile picture.   
+- Thought about adding cypress to test.  However, the tests will be brittle.  I am not advanced enough in cypress and I have had a hard time finding good examples to follow for authentication.  I would create a user journey where you login with predefined test user and password and create a channel, add messages and change profile picture.
 - Cypress session is still in experimental phase but looks to be the new way of doing things.
 - Found some profile picture stand-ins on freepik.  
 
