@@ -11,7 +11,7 @@ const Home = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [refreshChannels, setRefreshChannels] = useState(false);
     const { auth, setAuth } = useAuth();
-    const {id} = auth;
+    const { id } = auth;
 
     const [description, setDescription] = useState('');
     const [name, setName] = useState('');
@@ -22,21 +22,21 @@ const Home = (props) => {
     const [topChannelName, setTopChannelName] = useState('');
 
     useEffect(() => {
-      const close = (e) => {
-        if(e.keyCode === 27){
-          setIsOpen(false)
+        const close = (e) => {
+            if (e.keyCode === 27) {
+                setIsOpen(false)
+            }
         }
-      }
         window.addEventListener('keydown', close)
         return () => window.removeEventListener('keydown', close)
-    },[])
-  
+    }, [])
+
     const handleClose = () => {
-      setIsOpen(false)
+        setIsOpen(false)
     }
-  
+
     const handleSearch = (e) => {
-      setSearchTerm(e.target.value)
+        setSearchTerm(e.target.value)
     }
 
     const handleName = (e) => {
@@ -62,11 +62,11 @@ const Home = (props) => {
 
         try {
 
-            const response = await axios.post('/channels',
-                JSON.stringify({ name, description }),  {
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
-                    withCredentials: true
-                }
+            await axios.post('/channels',
+                JSON.stringify({ name, description }), {
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
+                withCredentials: true
+            }
             );
 
             setName('')
@@ -74,12 +74,12 @@ const Home = (props) => {
             setRefreshChannels(prev => !prev) // this will cause a re-run of useEffect in Channels  
         } catch (err) {
             if (!err?.response) {
-               console.log('Upload Failed')
+                console.log('Upload Failed')
             }
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         async function fetchUser() {
             const response = await axios.get(`/users/${id}`, {
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${auth.accessToken}` },
@@ -91,14 +91,14 @@ const Home = (props) => {
 
             // problem with picture not rendering with first load to welcome channel
             setAuth(prev => {
-                return { 
+                return {
                     ...prev,
-                    picture: response?.data.picture, 
+                    picture: response?.data.picture,
                     refreshToken: response?.data.refreshToken
                 }
             });
-          }
-          fetchUser()
+        }
+        fetchUser()
     }, [id, setAuth, auth.accessToken])
 
     // add useEffect to display latest channels messages
@@ -110,9 +110,9 @@ const Home = (props) => {
 
                 // add channelId to url ???
 
-               setTopChannelName(response.data[0].name)
-    
-               setTopChannelId(response.data[0]._id)
+                setTopChannelName(response.data[0].name)
+
+                setTopChannelId(response.data[0]._id)
             } catch (err) {
                 console.error(err)
             }
@@ -144,9 +144,9 @@ const Home = (props) => {
                 </Modal>
             </ClickOutside>
             <div>
-                <Channels 
-                    setIsOpen={setIsOpen} 
-                    refreshChannels={refreshChannels} 
+                <Channels
+                    setIsOpen={setIsOpen}
+                    refreshChannels={refreshChannels}
                     handleSubmit={handleSubmit}
                     searchTerm={searchTerm}
                     handleSearch={handleSearch}
@@ -155,15 +155,15 @@ const Home = (props) => {
                 />
                 <LoggedInUser mobileToggle={props.mobileToggle} />
             </div>
-            {topChannelId && 
-            <Messages 
-                topChannelId={topChannelId} 
-                topChannelName={topChannelName} 
-                channel={false} 
-                mobileToggle={props.mobileToggle}
-                handleMobileToggle={props.handleMobileToggle}
-                handleMobileChannelToggle={props.handleMobileChannelToggle}
-            />
+            {topChannelId &&
+                <Messages
+                    topChannelId={topChannelId}
+                    topChannelName={topChannelName}
+                    channel={false}
+                    mobileToggle={props.mobileToggle}
+                    handleMobileToggle={props.handleMobileToggle}
+                    handleMobileChannelToggle={props.handleMobileChannelToggle}
+                />
             }
         </div>
     )
