@@ -43,41 +43,41 @@ const Login = () => {
             const allChannels = await axios.get('/channels')
 
             const welcomeChannelExists = allChannels.data.filter(channel => channel.name.trim().includes('Welcome'))[0]
-          
+
             // changed the backend to send back userId and accessToken
             const accessToken = response?.data?.accessToken;
             const id = response?.data?.id;
-            
+
             setAuth({ user, accessToken, id });  // don't really need user anymore
             setUser('');
             setPwd('');
             //navigate(from, { replace: true }); // navigate to welcome channel
 
-            if(welcomeChannelExists) {
-                
-            // have to check if you are already a member of welcome channel 
-            // if you have already seen it - navigate to home component and pick what channel you want
-            // otherwise you will always go to the welcome channel 
-            
-                if(welcomeChannelExists.members.includes(id)) {
+            if (welcomeChannelExists) {
+
+                // have to check if you are already a member of welcome channel 
+                // if you have already seen it - navigate to home component and pick what channel you want
+                // otherwise you will always go to the welcome channel 
+
+                if (welcomeChannelExists.members.includes(id)) {
                     navigate(from, { replace: true });
                 } else {
                     navigate(`/channels/${welcomeChannelExists._id}`, { replace: true });
                 }
             } else {
-            
+
                 try {
-                    const response = await axios.post('/channels',
-                    JSON.stringify({ name: "Welcome", description: "Welcome to Chat Group application." }),  {
+                    await axios.post('/channels',
+                        JSON.stringify({ name: "Welcome", description: "Welcome to Chat Group application." }), {
                         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` },
                         withCredentials: true
                     }
-                );
-                    } catch (err){
-                        console.log(err)
+                    );
+                } catch (err) {
+                    console.log(err)
                 }
-                
-               navigate(`/channels/${welcomeChannelExists._id}`, { replace: true });
+
+                navigate(`/channels/${welcomeChannelExists._id}`, { replace: true });
             }
 
         } catch (err) {
