@@ -30,14 +30,15 @@ const Messages = (props) => {
     }
 
     useEffect(() => {
-
+        // need to look into fixing this
+        // need to move 2 functions called inside the useEffect
+        // cannot add functions as dependencies of the dependencies array?
         if (channelId === undefined && props.channel === false) {
             getMessagesWithProps()
         } else {
             getMessagesWithParams()
         }
-
-    }, [refreshMessages, channelId, props.channel, getMessagesWithParams]) // messages
+    }, [refreshMessages, channelId, props.channel]) // messages
 
     const handleTextChange = (e) => {
         setText(e.target.value);
