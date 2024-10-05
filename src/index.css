@@ -20,7 +20,8 @@ dd {
 ul,
 ol {
   list-style: none;
-  padding: 0; /* watch for problems */
+  padding: 0;
+  /* watch for problems */
 }
 
 html:focus-within {
@@ -31,7 +32,6 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  /*overflow: hidden;*/
   background: #252329;
   color: #fff;
 }
@@ -54,9 +54,9 @@ select {
 
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -72,7 +72,8 @@ a {
   cursor: pointer;
 }
 
-a, a:visited {
+a,
+a:visited {
   color: gray;
 }
 
@@ -80,24 +81,24 @@ input[type="text"],
 input[type="password"],
 button,
 textarea {
-font-size: 22px;
-padding: 0.25rem;
-border-radius: 0.5rem;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 label,
 button {
-margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 button {
-padding: 0.5rem;
-cursor: pointer;
-background: #3785e1;
-color: #fff;
-font-weight: bolder;
-border: none;
-font-size: 24px;
+  padding: 0.5rem;
+  cursor: pointer;
+  background: #3785e1;
+  color: #fff;
+  font-weight: bolder;
+  border: none;
+  font-size: 24px;
 }
 
 button:disabled {

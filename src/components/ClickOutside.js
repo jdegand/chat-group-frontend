@@ -1,23 +1,23 @@
-import {useRef, useEffect} from "react";
+import { useRef, useEffect } from "react";
 
-function ClickOutside(props){
+function ClickOutside(props) {
     const ref = useRef()
 
-    const {onClickOutside, children} = props;
+    const { onClickOutside, children } = props;
 
     const handleClickOutside = (e) => {
-        if(ref.current && !ref.current.contains(e.target)){
+        if (ref.current && !ref.current.contains(e.target)) {
             onClickOutside && onClickOutside()
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         document.addEventListener('click', handleClickOutside, true);
 
         return () => document.removeEventListener('click', handleClickOutside, true);
     })
 
-    if(!children){
+    if (!children) {
         return null;
     }
 

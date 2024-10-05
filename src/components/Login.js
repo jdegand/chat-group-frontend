@@ -51,7 +51,6 @@ const Login = () => {
             setAuth({ user, accessToken, id });  // don't really need user anymore
             setUser('');
             setPwd('');
-            //navigate(from, { replace: true }); // navigate to welcome channel
 
             if (welcomeChannelExists) {
 

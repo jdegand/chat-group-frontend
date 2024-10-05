@@ -59,7 +59,7 @@ const Register = () => {
                     withCredentials: true
                 }
             );
-           
+
             setSuccess(true);
             setUser('');
             setPwd('');
@@ -87,7 +87,7 @@ const Register = () => {
                 </section>
             ) : (
                 <section className="login-section">
-                    
+
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Devchallenges Chat Group</h1>
                     <h2>Register</h2>
