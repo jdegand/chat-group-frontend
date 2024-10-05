@@ -11,34 +11,31 @@ const Messages = (props) => {
     const [messages, setMessages] = useState([]);
     const [refreshMessages, setRefreshMessages] = useState(false);
 
-    const getMessagesWithProps = async () => {
-        try {
-            const response = await axios.get(`/channels/${props.topChannelId}/messages`);
-            setMessages(response.data);
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    const getMessagesWithParams = async () => {
-        try {
-            const response = await axios.get(`/channels/${channelId}/messages`);
-            setMessages(response.data);
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
     useEffect(() => {
-        // need to look into fixing this
-        // need to move 2 functions called inside the useEffect
-        // cannot add functions as dependencies of the dependencies array?
+        const getMessagesWithProps = async () => {
+            try {
+                const response = await axios.get(`/channels/${props.topChannelId}/messages`);
+                setMessages(response.data);
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        const getMessagesWithParams = async () => {
+            try {
+                const response = await axios.get(`/channels/${channelId}/messages`);
+                setMessages(response.data);
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
         if (channelId === undefined && props.channel === false) {
             getMessagesWithProps()
         } else {
             getMessagesWithParams()
         }
-    }, [refreshMessages, channelId, props.channel]) // messages
+    }, [refreshMessages, channelId, props.channel, props.topChannelId]) // messages
 
     const handleTextChange = (e) => {
         setText(e.target.value);
