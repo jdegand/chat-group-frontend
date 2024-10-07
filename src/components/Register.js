@@ -87,14 +87,14 @@ const Register = () => {
                 </section>
             ) : (
                 <section className="login-section">
-
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Devchallenges Chat Group</h1>
                     <h2>Register</h2>
                     <form className="form" onSubmit={handleSubmit}>
                         <label htmlFor="username">
-                            Username:
+                            Username:&nbsp;
                             <span className={validName ? "valid" : "hide"}>&#10003;</span>
+                            &nbsp;
                             <span className={validName || !user ? "hide" : "invalid"}>&#120;</span>
                         </label>
                         <input
@@ -118,8 +118,9 @@ const Register = () => {
 
 
                         <label htmlFor="password">
-                            Password:
+                            Password:&nbsp;
                             <span className={validPwd ? "valid" : "hide"}>&#10003;</span>
+                            &nbsp;
                             <span className={validPwd || !pwd ? "hide" : "invalid"}>&#120;</span>
                         </label>
                         <input
@@ -141,9 +142,10 @@ const Register = () => {
 
 
                         <label htmlFor="confirm_pwd">
-                            Confirm Password:
-                            <p className={validMatch && matchPwd ? "valid" : "hide"}>&#10003;</p>
-                            <p className={validMatch || !matchPwd ? "hide" : "invalid"}>&#120;</p>
+                            Confirm Password:&nbsp;
+                            <span className={validMatch && matchPwd ? "valid" : "hide"}>&#10003;</span>
+                            &nbsp;
+                            <span className={validMatch || !matchPwd ? "hide" : "invalid"}>&#120;</span>
                         </label>
                         <input
                             type="password"
