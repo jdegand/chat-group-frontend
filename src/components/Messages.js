@@ -88,23 +88,25 @@ const Messages = (props) => {
     return (
         <div>
             <div className="channel-name-div">
-                <div className="mobile-only" onClick={() => {
+                <button className="mobile-only" onClick={() => {
                     props.handleMobileToggle()
                     props.handleMobileChannelToggle()
-                }}>
+                }}
+                    aria-label="Toggle mobile menu"
+                >
                     <svg className="modal-icon-xl" viewBox="0 0 24 24">
                         <path fill="#fff" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
                     </svg>
-                </div>
+                </button>
 
-                <div className={props.mobileToggle || props.mobileChannelToggle ? "close-button-visible" : "close-button-not-visible"} onClick={() => {
+                <button className={props.mobileToggle || props.mobileChannelToggle ? "close-button-visible" : "close-button-not-visible"} onClick={() => {
                     props.handleMobileToggle()
                     props.handleMobileChannelToggle()
-                }}>
+                }} aria-label="Toggle menu" tabIndex={0}>
                     <svg className="modal-icon close-button-mobile" viewBox="0 0 24 24">
                         <path fill="#fff" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
                     </svg>
-                </div>
+                </button>
 
                 {props.topChannelName ? <h1 className="mbs-50">{props.topChannelName}</h1> : null}
                 {!props.topChannelName && messages?.channelInfo ? <h1 className="mbs-50">{messages.channelInfo[0].name}</h1> : null}
