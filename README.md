@@ -149,7 +149,7 @@ $ npm start
 - Even with TimeAgo or time format package - a lot of logic may be necessary to have 'yesterday at 2:00pm' date formatting
 - The channels on the sidebar should probably be ordered by the date of the last comment.  Or last clicked on channel could become first channel.
 - Not a fan of the color scheme of the design.  The input text and input background is not a great contrast.
-- Added scrollbars to the channels and members lists.  Only looked into changing the look of the default scrollbar in chrome.  Cross-browser support of scrollbar styling is usually problematic.
+- Added scrollbars to the channels and members lists.  Only looked into changing the look of the default scrollbar in chrome. Cross-browser support of scrollbar styling is usually problematic.
 - I added most of the svgs directly in the jsx vs importing them and passing them to the jsx.  Performance implications?
 - Check for errors when adding user to members array - might not refresh
 - Adding cleanup functions to some useEffects broke the app -> need to look more into cleanup best practices etc
@@ -158,16 +158,15 @@ $ npm start
 - improve error handling
 - look into improving original state value defaults.  Left some with nothing ie useState() vs an empty string or an empty array
 - non persist mode - refreshToken expires - you can't perform actions but you arent informed why - useRefreshToken hook not being used?
-- file inputs are uncontrolled components in react
-- testing - a *ton* of things to test -> *more complicated* than the original code.
-- a lot of features are combined.  I had trouble testing local storage because I used context as well.   You have to add context wrapper to your render but I used a hook for the context so that makes that harder and on and on.
-- MSW is one recommended way of testing api calls now. However, documentation is scarce.  Even Kent Dodds has no articles on his blog.
-- Might need to create in memory database of users, channels, and messages
+- File inputs are uncontrolled components in React.
 - Problems with userEvent.type -> need a name property on your input ?
-- Removed msw and need look at alteratives or find some good documentation to help.
-- Thought about adding cypress to test.  However, the tests will be brittle.  I am not advanced enough in cypress and I have had a hard time finding good examples to follow for authentication.  I would create a user journey where you login with predefined test user and password and create a channel, add messages and change profile picture.
-- Cypress session is still in experimental phase but looks to be the new way of doing things.
-- Found some profile picture stand-ins on freepik.  
+- Found some profile picture stand-ins on freepik.
+
+## Continued Development
+
+- Switch to Vite
+- Testing
+- Accessibility Tweaks and Styling changes
 
 ## Useful Resources
 
